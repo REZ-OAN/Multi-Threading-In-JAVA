@@ -15,7 +15,7 @@ public class ThreadMethods extends Thread {
                 Thread.sleep(1000);
                 System.out.println(getName() + " thread's state -> " + getState() + " priority -> " + getPriority()); // RUNNABLE
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                System.out.println("Thread interrupted: " + e);
             }
             System.out.println(getName() + " says " + i);
         }
@@ -36,7 +36,10 @@ public class ThreadMethods extends Thread {
          * .start() is a method of Thread Class which supposed to change the thread state
          * from NEW to RUNNABLE
          */
-
+        thread.interrupt();
+        /**
+         * this means stop what you doing with the thread, remove it from the CPU and listen for the interrupt then run again the thread or execution
+         */
          for (int i = 0; i < 5; i++) {
             Thread.sleep(800); 
             System.out.println(Thread.currentThread().getName()+ " thread is checking " + thread.getName() + " thread's state -> " + thread.getState() + " priority -> " + thread.getPriority()); // TIMED_WAITING
